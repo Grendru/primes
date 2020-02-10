@@ -1,19 +1,49 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <vector>
+
+
 using namespace std;
+typedef uint32_t* pointer;
+typedef uint32_t& reference;
 
 class Primes
 {
+
 public:
-	Primes(uint32_t max); // контейнер простых чисел в диапазоне 1..max
-	Primes(); // контейнер простых чисел без верхней границы
-	class Iterator;
-	Iterator begin();
-	Iterator end(); // для контейнера без верхней границы end() достижим только в пустом контейнере
+	Primes(uint32_t max, char mode); // РєРѕРЅС‚РµР№РЅРµСЂ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» РІ РґРёР°РїР°Р·РѕРЅРµ 1..max
+	Primes(); // РєРѕРЅС‚РµР№РЅРµСЂ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» Р±РµР· РІРµСЂС…РЅРµР№ РіСЂР°РЅРёС†С‹
+	class Iterator
+	{
+	private:
+		pointer cur;
+	public:
+		Iterator(pointer p) : cur(p) {}
+		reference operator+(uint32_t n) { return *(cur + n); }
+		reference operator-(uint32_t n) { return *(cur - n); }
+
+
+		reference operator++(int) { return *cur++; }
+		reference operator--(int) { return *cur--; }
+		reference operator++() { return *++cur; }
+		reference operator--() { return *--cur; }
+
+
+		bool operator!=(const Iterator& it) { return cur != it.cur; }
+		bool operator==(const Iterator& it) { return cur == it.cur; }
+		bool operator<(const Iterator& it) { return cur < it.cur; }
+		bool operator>(const Iterator& it) { return cur > it.cur; }
+		bool operator<=(const Iterator& it) { return cur <= it.cur; }
+		bool operator>=(const Iterator& it) { return cur >= it.cur; }
+		reference operator*() { return *cur; }
+
+		friend class Primes;
+	};
+	Iterator begin() noexcept;
+	Iterator end() noexcept; // РґР»СЏ РєРѕРЅС‚РµР№РЅРµСЂР° Р±РµР· РІРµСЂС…РЅРµР№ РіСЂР°РЅРёС†С‹ end() РґРѕСЃС‚РёР¶РёРј С‚РѕР»СЊРєРѕ РІ РїСѓСЃС‚РѕРј РєРѕРЅС‚РµР№РЅРµСЂРµ
 	uint32_t size();
-	uint32_t operator[](uint32_t index);
+	reference operator[](uint32_t index);
 private:
+	uint32_t* data;
 	uint32_t amount;
-	vector<uint32_t> data;
 };
 

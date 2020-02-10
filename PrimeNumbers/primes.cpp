@@ -1,30 +1,77 @@
-#include "primes.h"
+﻿#include "primes.h"
 
-Primes::Primes(uint32_t max)
+bool IsPrime(uint32_t n)
 {
-
+	if (n == 1 || n == 2) return true;
+	if (n % 2 == 0) return false;
+	for (uint32_t i = 3; i <= sqrt(n); i+=2)
+	{
+		if (n % i == 0) return false;
+	}
+	return true;
+}
+Primes::Primes(uint32_t max, char mode)
+{
+	amount = 0;
+	data = NULL;
+	if (mode == 'r')
+	{
+		for (uint32_t i = 1; i < max; i++)
+		{
+			if (IsPrime(i))
+			{
+				amount++;
+				uint32_t* temp = new uint32_t[amount];
+				memcpy(temp, data, sizeof(uint32_t) * (amount - 1));
+				temp[amount - 1] = i;
+				if (data != NULL)
+					delete[] data;
+				data = temp;
+			}
+		}
+	}
+	else if (mode == 'q')
+	{
+		uint32_t i = 0;
+		while (amount != max)
+		{
+			if (IsPrime(i))
+			{
+				amount++;
+				uint32_t* temp = new uint32_t[amount];
+				memcpy(temp, data, sizeof(uint32_t) * (amount - 1));
+				temp[amount - 1] = i;
+				if (data != NULL)
+					delete[] data;
+				data = temp;
+			}
+			i++;
+		}
+	}
 }
 Primes::Primes()
 {
-
+	amount = 0;
+	data = NULL;
 }
-class Primes::Iterator
-{
-};
+//class Primes::Iterator
+//{
+//
+//};
 
-Primes::Iterator Primes::begin()
+Primes::Iterator Primes::begin() noexcept
 {
-
+	return Iterator(data);
 }
-Primes::Iterator Primes::end()
+Primes::Iterator Primes::end() noexcept
 {
-
+	return Iterator(data+amount);
 }
 uint32_t Primes::size()
 {
-
+	return amount;
 }
-uint32_t Primes::operator[](uint32_t index)
+reference Primes::operator[](uint32_t index)
 {
-
+	return data[index];
 }
