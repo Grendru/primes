@@ -55,7 +55,7 @@ Primes::Iterator Primes::begin() noexcept
 }
 Primes::Iterator Primes::end() noexcept
 {
-	return Iterator(data+amount);
+	return Iterator(data + amount);
 }
 uint32_t Primes::size()
 {
@@ -72,7 +72,7 @@ reference Primes::operator[](uint32_t index)
 Primes::Primes(const Primes& other) : amount(other.amount)
 {
 	data = new uint32_t[amount];
-	memcpy(data, other.data, sizeof(uint32_t)*amount);
+	memcpy(data, other.data, sizeof(uint32_t) * amount);
 }
 Primes::Primes(Primes&& other) : data(other.data)
 {
