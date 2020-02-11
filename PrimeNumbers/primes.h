@@ -6,6 +6,10 @@ using namespace std;
 typedef uint32_t* pointer;
 typedef uint32_t& reference;
 
+
+bool IsPrime(uint32_t n);
+
+
 class Primes
 {
 

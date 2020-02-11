@@ -4,51 +4,69 @@
 
 using namespace std;
 
-void PrintToFile(char* filename, class Primes* myPrimes)
+
+void PrintToFile(char* filename, class Primes myPrimes, char mode)
 {
+	cout << "Print mode: " << mode << endl;
 	ofstream file;
 	file.open(filename, ofstream::out);
-	for (auto it : *myPrimes)
+	if (mode == 'n')
 	{
-		file << it << " " << endl;
+		for (auto it : myPrimes)
+		{
+			file << it <<  endl;
+		}
+	}
+	else if (mode == 'p')
+	{
+		for (uint32_t i = 0; myPrimes[i] <= myPrimes.size(); i++)
+		{
+			file << myPrimes[myPrimes[i]] <<  endl;
+		}
+	}
+	else if (mode == 'g')
+	{
+		for (auto it : myPrimes)
+		{
+			if ( IsPrime(2*it + 1) )file << it << endl;
+		}
 	}
 	file.close();
 }
 int main(int argc, char* argv[])
 {
-	//cout << argc << endl << argv[1] << endl;
-	class Primes* myPrimes = NULL;
-	if (argc == 1) //запуск приложения по умолчанию
+	bool print = false;
+	char* FileName = NULL;
+	char modePrint = 'n';
+	char modeGenerate = 'r';
+	uint32_t size = 100;
+	for (uint32_t i = 0; i < argc; i++)
 	{
-		class Primes temp(100,'r');
-		for (auto it : temp)
+		if (argv[i][0] == '-' && (argv[i][1] == 'r' || argv[i][1] == 'q'))
 		{
-			cout << it << " " << endl;
+			size = atoi(argv[i + 1]);
+			modeGenerate = argv[i][1];
 		}
+		else if (argv[i][0] == '-' && argv[i][1] == 's' && (argv[i][2] == 'g' || argv[i][2] == 'p'))
+		{
+			modePrint = argv[i][2];
+		}
+		else if (argv[i][0] == '-' && argv[i][1] == 'o')
+		{
+			FileName = argv[i + 1];
+			print = true;
+		}
+	}
+	class Primes myPrimes(size, modeGenerate);
+	if (print)
+	{
+		PrintToFile(FileName, myPrimes, modePrint);
 	}
 	else
 	{
-		bool print = false;
-		for (uint32_t i = 0; i < argc; i++)
+		for (auto it : myPrimes)
 		{
-			if (argv[i][0] == '-' && (argv[i][1] == 'r' || argv[i][1] == 'q'))
-			{
-				class Primes temp(atoi(argv[i+1]), argv[i][1]);
-				myPrimes = &temp;
-				print = true;
-			}
-			else if (argv[i][0] == '-' && argv[i][1] == 'o')
-			{
-				if (print) PrintToFile(argv[i + 1], myPrimes);
-				print = false;
-			}
-		}
-		if (print)
-		{
-			for (auto it : *myPrimes)
-			{
-				cout << it << " ";
-			}
+			cout << it << " ";
 		}
 	}
 }
