@@ -4,7 +4,7 @@ bool IsPrime(uint32_t n)
 {
 	if (n == 1 || n == 2) return true;
 	if (n % 2 == 0) return false;
-	for (uint32_t i = 3; i <= sqrt(n); i+=2)
+	for (uint32_t i = 3; i <= sqrt(n); i += 2)
 	{
 		if (n % i == 0) return false;
 	}
@@ -49,16 +49,6 @@ Primes::Primes(uint32_t max, char mode)
 		}
 	}
 }
-Primes::Primes()
-{
-	amount = 0;
-	data = NULL;
-}
-//class Primes::Iterator
-//{
-//
-//};
-
 Primes::Iterator Primes::begin() noexcept
 {
 	return Iterator(data);
@@ -74,4 +64,18 @@ uint32_t Primes::size()
 reference Primes::operator[](uint32_t index)
 {
 	return data[index];
+}
+
+
+
+
+Primes::Primes(const Primes& other) : amount(other.amount)
+{
+	data = new uint32_t[amount];
+	memcpy(data, other.data, sizeof(uint32_t)*amount);
+}
+Primes::Primes(Primes&& other) : data(other.data)
+{
+	other.amount = 0;
+	other.data = nullptr;
 }

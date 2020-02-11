@@ -15,7 +15,8 @@ class Primes
 
 public:
 	Primes(uint32_t max, char mode); // контейнер простых чисел в диапазоне 1..max
-	Primes(); // контейнер простых чисел без верхней границы
+	Primes(const Primes& other);
+	Primes(Primes&& other);
 	class Iterator
 	{
 	private:

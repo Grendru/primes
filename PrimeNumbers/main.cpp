@@ -1,9 +1,11 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <intrin.h>
 #include "primes.h"
 
 using namespace std;
-
+#pragma intrinsic(__rdtsc)
 
 void PrintToFile(char* filename, class Primes myPrimes, char mode)
 {
@@ -36,10 +38,11 @@ void PrintToFile(char* filename, class Primes myPrimes, char mode)
 }
 int main(int argc, char* argv[])
 {
-	bool print = false;
-	char* FileName = NULL;
+	bool print = false, statisticMode = false;
+	char *fileName = NULL, *statisticFile = NULL;
 	char modePrint = 'n';
 	char modeGenerate = 'r';
+	unsigned __int64 timeStart, time;
 	uint32_t size = 100;
 	for (uint32_t i = 1; i < argc; i++)
 	{
@@ -53,9 +56,15 @@ int main(int argc, char* argv[])
 		{
 			modePrint = argv[i][2];
 		}
+		else if (argv[i][0] == '-' && argv[i][1] == 's' && argv[i][2] == 't' && argv[i][3] == '\0' && (argv[i + 1][0] >= 'a' && argv[i + 1][0] <= 'z' || argv[i + 1][0] >= 'A' && argv[i + 1][0] <= 'Z' || argv[i + 1][0] >= '0' && argv[i + 1][0] <= '9'))
+		{
+			statisticMode = true;
+			statisticFile = argv[i + 1];
+			i++;
+		}
 		else if (argv[i][0] == '-' && argv[i][1] == 'o' && argv[i][2] == '\0' && (argv[i + 1][0] >= 'a' && argv[i + 1][0] <= 'z' || argv[i + 1][0] >= 'A' && argv[i + 1][0] <= 'Z' || argv[i + 1][0] >= '0' && argv[i + 1][0] <= '9'))
 		{
-			FileName = argv[i + 1];
+			fileName = argv[i + 1];
 			print = true;
 			i++;
 		}
@@ -65,10 +74,23 @@ int main(int argc, char* argv[])
 			exit(1);
 		}
 	}
+	if (statisticMode)
+	{
+		timeStart = __rdtsc();
+	}
 	class Primes myPrimes(size, modeGenerate);
+	if (statisticMode)
+	{
+		time = __rdtsc() - timeStart;
+		ofstream file;
+		file.open(statisticFile, ofstream::app);
+		file << "[" << setw(6) << myPrimes.size() << "]: " << setw(10) << time
+			<< " tacts"<< setw(15) << uint64_t(myPrimes.size()) + uint64_t((myPrimes.size() - 1)) * sizeof(uint32_t) << " bytes" << endl;
+		file.close();
+	}
 	if (print)
 	{
-		PrintToFile(FileName, myPrimes, modePrint);
+		PrintToFile(fileName, myPrimes, modePrint);
 	}
 	else
 	{
