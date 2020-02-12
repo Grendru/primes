@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
 	uint64_t timeStart, time, volumeMemory;
 	uint32_t size = 100;
 	signal(SIGINT, keyInterrupt); 
-	signal(SIGTSTP, keyInterrupt); 
+	//signal(SIGTSTP, keyInterrupt); 
 	for (uint32_t i = 1; i < argc; i++)
 	{
 		if ((argv[i][0] == '-' && (argv[i][1] == 'r' || argv[i][1] == 'q')) && argv[i][2] == '\0' && (argv[i + 1][0] >= '0' && argv[i + 1][0] <= '9'))

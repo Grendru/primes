@@ -129,6 +129,61 @@
   <ItemGroup>
     <ClInclude Include="primes.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="documentations\annotated.html" />
+    <None Include="documentations\classes.html" />
+    <None Include="documentations\classPrimes-members.html" />
+    <None Include="documentations\classPrimes.html" />
+    <None Include="documentations\classPrimes_1_1Iterator-members.html" />
+    <None Include="documentations\classPrimes_1_1Iterator.html" />
+    <None Include="documentations\doxygen.css" />
+    <None Include="documentations\dynsections.js" />
+    <None Include="documentations\files.html" />
+    <None Include="documentations\functions.html" />
+    <None Include="documentations\functions_func.html" />
+    <None Include="documentations\globals.html" />
+    <None Include="documentations\globals_func.html" />
+    <None Include="documentations\globals_type.html" />
+    <None Include="documentations\graph_legend.html" />
+    <None Include="documentations\index.html" />
+    <None Include="documentations\main_8cpp.html" />
+    <None Include="documentations\primes_8cpp.html" />
+    <None Include="documentations\primes_8h.html" />
+    <None Include="documentations\primes_8h_source.html" />
+    <None Include="documentations\search\all_0.html" />
+    <None Include="documentations\search\all_1.html" />
+    <None Include="documentations\search\all_2.html" />
+    <None Include="documentations\search\all_3.html" />
+    <None Include="documentations\search\all_4.html" />
+    <None Include="documentations\search\all_5.html" />
+    <None Include="documentations\search\all_6.html" />
+    <None Include="documentations\search\all_7.html" />
+    <None Include="documentations\search\all_8.html" />
+    <None Include="documentations\search\classes_0.html" />
+    <None Include="documentations\search\classes_1.html" />
+    <None Include="documentations\search\files_0.html" />
+    <None Include="documentations\search\files_1.html" />
+    <None Include="documentations\search\functions_0.html" />
+    <None Include="documentations\search\functions_1.html" />
+    <None Include="documentations\search\functions_2.html" />
+    <None Include="documentations\search\functions_3.html" />
+    <None Include="documentations\search\functions_4.html" />
+    <None Include="documentations\search\functions_5.html" />
+    <None Include="documentations\search\functions_6.html" />
+    <None Include="documentations\search\functions_7.html" />
+    <None Include="documentations\search\nomatches.html" />
+    <None Include="documentations\search\typedefs_0.html" />
+    <None Include="documentations\search\typedefs_1.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="documentations\bc_s.png" />
+    <Image Include="documentations\bdwn.png" />
+    <Image Include="documentations\closed.png" />
+    <Image Include="documentations\doc.png" />
+    <Image Include="documentations\doxygen.png" />
+    <Image Include="documentations\folderclosed.png" />
+    <Image Include="documentations\folderopen.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
