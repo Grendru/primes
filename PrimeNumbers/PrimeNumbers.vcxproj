@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="primes.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tests\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="primes.h" />

@@ -10,15 +10,15 @@
 #include <iomanip>
 
 using namespace std;
-typedef uint32_t* pointer; ///< Указатель на элемент типа uint32_t
-typedef uint32_t& reference; ///< Ссылка на элемент типа uint32_t
+typedef uint32_t* pointer; ///< Указатель на элемент типа uint32_t.
+typedef uint32_t& reference; ///< Ссылка на элемент типа uint32_t.
 
 
 bool IsPrime(uint32_t n);///< Функция проверки числа на простоту.
 
 
 /*!
-	\brief Класс-контейнер простых чисел
+	\brief Класс-контейнер простых чисел.
 
 	Данный класс содержит в себе контейнер простых чисел и методы работы с ним.
 */
@@ -28,7 +28,7 @@ public:
 	Primes(uint32_t max, char mode); ///< Создаёт объект класса Primes.
 	Primes(const Primes& other); ///< конструктор копирования.
 	Primes(Primes&& other); ///< конструктор перемещения.
-	class Iterator;
+	class Iterator;///< итератор класса.
 	Iterator begin() noexcept; ///< Возвращает итератор на первый элемент контейнера. 
 	Iterator end() noexcept; ///< Возвращает итератор на элемент, следующий за последним элементом контейнера.
 	uint32_t size(); ///< Возращает количество элементов в контейнере.
@@ -39,9 +39,9 @@ private:
 };
 
 /*!
-	\brief Итератор контейнера простых чисел
+	\brief Итератор контейнера простых чисел.
 
-	Данный класс содержит в себе методы итератора
+	Данный класс содержит в себе методы итератора.
 */
 class Primes::Iterator
 {
@@ -49,13 +49,13 @@ private:
 	pointer cur;
 public:
 	Iterator(pointer p);
-	reference operator+(uint32_t n);
-	reference operator-(uint32_t n);
+	Iterator operator+(uint32_t n);
+	Iterator operator-(uint32_t n);
 
-	reference operator++(int);
-	reference operator--(int);
-	reference operator++();
-	reference operator--();
+	Iterator  operator++(int);
+	Iterator  operator--(int);
+	Iterator  operator++();
+	Iterator  operator--();
 
 	bool operator!=(const Iterator& it);
 	bool operator==(const Iterator& it);

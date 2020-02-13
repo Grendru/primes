@@ -29,7 +29,7 @@ void keyInterrupt(int sig)
 \param[in] time Время создания контейнера в тактах процессора.
 \param[in] volumeMemory Объем памяти, затраченной во время создания контейнера.
 \param[in] size Количество элементов контейнера.
-\warning Оценка объема памяти выполянется приблизительно
+\warning Оценка объема памяти выполянется приблизительно.
 */
 void PrintStatistic(char* fileName, uint64_t time, uint32_t volumeMemory, uint32_t size)
 {
@@ -40,10 +40,10 @@ void PrintStatistic(char* fileName, uint64_t time, uint32_t volumeMemory, uint32
 	file.close();
 }
 /*!
-Осуществляет запись содержащихся в контейнере объектов в файл
-\param[in] filename Имя файла для записи
-\param[in] myPrimes Контейнер
-\param[in] mode Режим печати ('n' - печать всех элементов, 'g' - печать только простых чисел Софи Жермен, 'r' - печать только суперпростых чисел)
+Осуществляет запись содержащихся в контейнере объектов в файл.
+\param[in] filename Имя файла для записи.
+\param[in] myPrimes Контейнер.
+\param[in] mode Режим печати ('n' - печать всех элементов, 'g' - печать только простых чисел Софи Жермен, 'r' - печать только суперпростых чисел).
 */
 void PrintToFile(char* filename, class Primes myPrimes, char mode)
 {
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
 	uint64_t timeStart, time, volumeMemory;
 	uint32_t size = 100;
 	signal(SIGINT, keyInterrupt); 
-	//signal(SIGTSTP, keyInterrupt); 
+	signal(SIGTSTP, keyInterrupt); 
 	for (uint32_t i = 1; i < argc; i++)
 	{
 		if ((argv[i][0] == '-' && (argv[i][1] == 'r' || argv[i][1] == 'q')) && argv[i][2] == '\0' && (argv[i + 1][0] >= '0' && argv[i + 1][0] <= '9'))

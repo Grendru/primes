@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eugene/Primes/primes.cpp
+primes.h
+/home/eugene/Primes/primes.h
+
+/home/eugene/Primes/primes.h
+iostream
+-
+string.h
+-
+math.h
+-
+iomanip
+-
+
+/home/eugene/Primes/tests/test.cpp
+gtest/gtest.h
+-
+../primes.cpp
+/home/eugene/Primes/primes.cpp
+

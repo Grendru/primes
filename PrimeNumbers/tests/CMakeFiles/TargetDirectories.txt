@@ -1,0 +1,3 @@
+/home/eugene/Primes/tests/CMakeFiles/rebuild_cache.dir
+/home/eugene/Primes/tests/CMakeFiles/runTests.dir
+/home/eugene/Primes/tests/CMakeFiles/edit_cache.dir
