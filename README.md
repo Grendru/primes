@@ -10,6 +10,9 @@
 	-st [fileName]  - вывод статистики в указанный файл. 
  
 Команды вводятся через пробел. Первые две команды и команды -sg, -sp соответсвенно взаимоисключающие. Пример запуска программы:
-./primes -q 100 -o output.txt -sp -st stat.txt		- создание контейнера, содержащего первые 100 простых чисел, вывод только суперпростых чисел в файл output.txt, запись статистики в файл stat.txt.
+
+./primes -q 100 -o output.txt -sp -st stat.txt		
+
+- создание контейнера, содержащего первые 100 простых чисел, вывод только суперпростых чисел в файл output.txt, запись статистики в файл stat.txt.
 
 Documentations link: https://grendru.github.io/primes/PrimeNumbers/documentations/index.html
